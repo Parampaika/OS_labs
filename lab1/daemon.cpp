@@ -277,14 +277,6 @@ void Daemon::InitDaemon (const std::string& path_to_config) {
       exit(EXIT_FAILURE);
    }
 
-   int pid = fork();
-   if (pid == -1) {
-      syslog(LOG_USER, "Error while initing daemon");
-      exit(EXIT_FAILURE);
-   } else if (pid) {
-      return;
-   }
-
    KillIfOpened();
    InitPidFile();
 
